@@ -14,6 +14,7 @@ client.once('ready', () => {
         if (message && message != '') {
             text = message
         }
+        // Script's actually been active before this! Hahahah!
         console.log('Script is now active, enjoy!');
     });
 });
