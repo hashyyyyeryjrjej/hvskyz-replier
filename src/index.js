@@ -6,18 +6,24 @@ const readline = require('readline').createInterface({
 const { Client } = require("discord.js-selfbot-v13");
 
 const client = new Client({ checkUpdate: false });
+let text = 'https://media.discordapp.net/attachments/956941437277192192/976717145268445264/image0-3-1.gif'
 let responses = {};
 
 client.once('ready', () => {
-    console.log('Script is active, enjoy!');
+    readline.question('What message should I send? (Leave empty for default): ', message => {
+        if (message && message != '') {
+            text = message
+        }
+        console.log('Script is now active, enjoy!');
+    });
 });
 
 client.on('messageCreate', message => {
-    if (message.author.id != '639668653306150932') {
+    if (message.author.id != '588947015489159169') {
         return;
     }
 
-    message.channel.send('https://media.discordapp.net/attachments/956941437277192192/976717145268445264/image0-3-1.gif')
+    message.channel.send(text)
     .then(sentMessage => {
         responses[message.id] = sentMessage;
     })
